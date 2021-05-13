@@ -1,7 +1,77 @@
-let Conductividad = 0
-let PConduct = 0
 let Humedad = 0
 let PHumedad = 0
+let Conductividad = 0
+let PConduct = 0
+let Acidez = 0
+let PAcidez = 0
+basic.forever(function () {
+    Humedad = pins.analogReadPin(AnalogPin.P1)
+    PHumedad = pins.map(
+    Humedad,
+    0,
+    1023,
+    0,
+    5
+    )
+    if (PHumedad == 0) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    }
+    if (PHumedad > 0 && PHumedad <= 1) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . # . . .
+            `)
+    } else {
+        if (PHumedad > 1 && PHumedad <= 2) {
+            basic.showLeds(`
+                . . . . .
+                . . . . .
+                . . . . .
+                . # . . .
+                . # . . .
+                `)
+        } else {
+            if (PHumedad > 2 && PHumedad <= 3) {
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    . # . . .
+                    . # . . .
+                    . # . . .
+                    `)
+            } else {
+                if (PHumedad > 3 && PHumedad <= 4) {
+                    basic.showLeds(`
+                        . . . . .
+                        . # . . .
+                        . # . . .
+                        . # . . .
+                        . # . . .
+                        `)
+                } else {
+                    if (PHumedad > 4 && PHumedad <= 5) {
+                        basic.showLeds(`
+                            . # . . .
+                            . # . . .
+                            . # . . .
+                            . # . . .
+                            . # . . .
+                            `)
+                    }
+                }
+            }
+        }
+    }
+})
 basic.forever(function () {
     Conductividad = pins.analogReadPin(AnalogPin.P0)
     PConduct = pins.map(
@@ -71,15 +141,15 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
-    Humedad = pins.analogReadPin(AnalogPin.P1)
-    PHumedad = pins.map(
-    Humedad,
+    Acidez = pins.analogReadPin(AnalogPin.P2)
+    PAcidez = pins.map(
+    Acidez,
     0,
     1023,
     0,
     5
     )
-    if (PHumedad == 0) {
+    if (PAcidez == 0) {
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -88,117 +158,49 @@ basic.forever(function () {
             . . . . .
             `)
     }
-    if (PHumedad > 0 && PHumedad <= 1) {
+    if (PAcidez > 0 && PAcidez <= 1) {
         basic.showLeds(`
             . . . . .
             . . . . .
             . . . . .
             . . . . .
-            # . . . .
+            . . # . .
             `)
     } else {
-        if (PHumedad > 1 && PHumedad <= 2) {
+        if (PAcidez > 1 && PAcidez <= 2) {
             basic.showLeds(`
                 . . . . .
                 . . . . .
                 . . . . .
-                # . . . .
-                # . . . .
+                . . # . .
+                . . # . .
                 `)
         } else {
-            if (PHumedad > 2 && PHumedad <= 3) {
+            if (PAcidez > 2 && PAcidez <= 3) {
                 basic.showLeds(`
                     . . . . .
                     . . . . .
-                    # . . . .
-                    # . . . .
-                    # . . . .
+                    . . # . .
+                    . . # . .
+                    . . # . .
                     `)
             } else {
-                if (PHumedad > 3 && PHumedad <= 4) {
+                if (PAcidez > 3 && PAcidez <= 4) {
                     basic.showLeds(`
                         . . . . .
-                        # . . . .
-                        # . . . .
-                        # . . . .
-                        # . . . .
+                        . . # . .
+                        . . # . .
+                        . . # . .
+                        . . # . .
                         `)
                 } else {
-                    if (PHumedad > 4 && PHumedad <= 5) {
+                    if (PAcidez > 4 && PAcidez <= 5) {
                         basic.showLeds(`
-                            # . . . .
-                            # . . . .
-                            # . . . .
-                            # . . . .
-                            # . . . .
-                            `)
-                    }
-                }
-            }
-        }
-    }
-})
-basic.forever(function () {
-    Humedad = pins.analogReadPin(AnalogPin.P1)
-    PHumedad = pins.map(
-    Humedad,
-    0,
-    1023,
-    0,
-    5
-    )
-    if (PHumedad == 0) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            `)
-    }
-    if (PHumedad > 0 && PHumedad <= 1) {
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . . . .
-            . . . . .
-            # . . . .
-            `)
-    } else {
-        if (PHumedad > 1 && PHumedad <= 2) {
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                . . . . .
-                # . . . .
-                # . . . .
-                `)
-        } else {
-            if (PHumedad > 2 && PHumedad <= 3) {
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    # . . . .
-                    # . . . .
-                    # . . . .
-                    `)
-            } else {
-                if (PHumedad > 3 && PHumedad <= 4) {
-                    basic.showLeds(`
-                        . . . . .
-                        # . . . .
-                        # . . . .
-                        # . . . .
-                        # . . . .
-                        `)
-                } else {
-                    if (PHumedad > 4 && PHumedad <= 5) {
-                        basic.showLeds(`
-                            # . . . .
-                            # . . . .
-                            # . . . .
-                            # . . . .
-                            # . . . .
+                            . . # . .
+                            . . # . .
+                            . . # . .
+                            . . # . .
+                            . . # . .
                             `)
                     }
                 }
